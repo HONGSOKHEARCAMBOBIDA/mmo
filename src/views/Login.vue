@@ -91,7 +91,7 @@ const handleLogin = async (): Promise<void> => {
         type="password"
       />
 
-      <AppButton  :loading-icon="Eleme" :loading="loading" native-type="submit" block>
+      <AppButton  size="default" type="primary" dark :loading-icon="Eleme" :loading="loading" native-type="submit" block>
         ចូលប្រព័ន្ធ
       </AppButton>
     </el-form>

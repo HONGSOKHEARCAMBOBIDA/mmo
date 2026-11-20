@@ -18,6 +18,27 @@ const routes = [
           short: "ទិន្ន័យ",
           showInNav: true,
         },
+        redirect: "/Dashboard/Room",
+        children:[
+          {
+            path: "Room",
+            name: "Room",
+            component: () => import("../views/Room.vue"),
+            meta: { title: "បន្ទប់", showInNav: false },
+          },   
+          {
+            path: "Building",
+            name: "Building",
+            component: () => import("../views/Building.vue"),
+            meta: { title: "អគ្គារ", showInNav: false },
+          },      
+          {
+            path: "Floor",
+            name: "Floor",
+            component: () => import("../views/Floor.vue"),
+            meta: { title: "ជាន់", showInNav: false },
+          },      
+        ]
       },      
     ]
   },
@@ -38,10 +59,10 @@ router.beforeEach((to:RouteLocationNormalized) => {
   const userDataStore = useUserDataStore();
   const auth = useAuthStore();
   if (!to.meta.public && !auth.isLoggedIn) {
-    return { name: "Login" };
+    return { name: "Room" };
   }
-  if (to.name === "Login" && auth.isLoggedIn) {
-    return { name: "Dashboard" };
+  if (to.name === "Room" && auth.isLoggedIn) {
+    return { name: "Room" };
   }
   if (to.meta.permission) {
     const hasPermission = userDataStore.permissions.includes(
@@ -49,7 +70,7 @@ router.beforeEach((to:RouteLocationNormalized) => {
     );
 
     if (!hasPermission) {
-      return { name: 'Dashboard' };
+      return { name: 'Room' };
     }
   }
   if (to.meta.title) {

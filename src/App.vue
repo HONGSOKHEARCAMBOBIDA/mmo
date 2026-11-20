@@ -1,42 +1,30 @@
+
 <script setup lang="ts">
+import YouTubePlayer from './components/YouTubePlayer.vue';
+
+const videos = Array.from({ length: 30 }, (_, index) => index + 1);
 </script>
 
 <template>
-  <router-view />
+  <div class="video-grid">
+    <div
+      v-for="video in videos"
+      :key="video"
+      class="video-item"
+    >
+      <YouTubePlayer />
+    </div>
+  </div>
 </template>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Siemreap&display=swap');
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+<style scoped>
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
 }
 
-body {
-  font-family: 'Siemreap', sans-serif;
-  background: #f0f2f5;
+.video-item {
+  min-width: 0;
 }
-
-.el-button,
-.el-input,
-.el-select,
-.el-dialog,
-.el-table,
-.el-menu,
-.el-form,
-.el-card,
-.el-dropdown,
-.el-date-picker,
-.el-input__inner::placeholder {
-  font-family: 'Siemreap', sans-serif;
-}
-.el-pagination {
-  font-family: 'Siemreap', sans-serif !important;
-}
-.el-loading-mask {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
 </style>
