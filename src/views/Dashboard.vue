@@ -5,20 +5,12 @@ import { useAuthStore } from "../store/auth.ts";
 import router from "../router/index.ts";
 import {
   House,
-  Menu as IconMenu,
   User,
-  Money,
-  Document,
   TrendCharts,
   Setting,
   Wallet,
   Odometer,
-  Watermelon,
   Lightning,
-  Coin,
-  Collection,
-  Fold,
-  Expand,
   OfficeBuilding
 } from "@element-plus/icons-vue";
 import AppButton from "../components/AppButton.vue";
@@ -32,33 +24,9 @@ const toggleSidebar = () => {
 const userdataStore = useUserDataStore();
 const auth = useAuthStore();
 
-interface RentalRoom {
-  date: string;
-  room_number: string;
-  tenant_name: string;
-  address: string;
-  monthly_rent: number;
-  status: string;
-}
 
-const tableData = ref<RentalRoom[]>([
-  {
-    date: "2026-11-01",
-    room_number: "A-001",
-    tenant_name: "សុខ សុភា",
-    address: "ភ្នំពេញ",
-    monthly_rent: 150,
-    status: "បានជួល",
-  },
-  {
-    date: "2026-11-01",
-    room_number: "A-002",
-    tenant_name: "គ្មានអ្នកជួល",
-    address: "ភ្នំពេញ",
-    monthly_rent: 120,
-    status: "ទំនេរ",
-  },
-]);
+
+
 
 function handleCommand(cmd: string): void {
   if (cmd === "logout") {
